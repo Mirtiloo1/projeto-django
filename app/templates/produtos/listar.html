@@ -1,0 +1,44 @@
+{% extends 'template.html' %}
+{% load static %}
+
+{% block conteudo %}
+<h1>Seus Produtos Cadastrados</h1>
+<a href="{% url 'cadastrar_produto' %}">Cadastrar Novo Produto</a>
+
+<div class="produtos-grid">
+    {% for prod in produtos_db %}
+    <div class="produto-card">
+        {% if prod.foto %}
+            <img src="{{ prod.foto.url }}" alt="{{ prod.nome }}" width="150px">
+        {% else %}
+            <img src="{% static 'no_image.png' %}" alt="Sem imagem" width="150px">
+        {% endif %}
+        <h3>{{ prod.nome }}</h3>
+        <p>{{ prod.descricao }}</p>
+        <p>R$ {{ prod.preco|floatformat:2 }}</p>
+        <p>Estoque: {{ prod.estoque }}</p>
+        <div class="botoes-acao">
+            <a href="{% url 'editar_produto' prod.id %}" class="btn">Editar</a>
+            <a href="{% url 'excluir_produto' prod.id %}" class="btn btn-excluir">Excluir</a>
+            <a href="{% url 'comprar_produto' prod.id %}" class="btn btn-primary">Comprar</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>Nenhum produto cadastrado ainda.</p>
+    {% endfor %}
+</div>
+
+<hr>
+
+<h2>Produtos Internacionais (API)</h2>
+<div class="produtos-grid">
+    {% for prod_api in produtos_api %}
+    <div class="produto-card">
+        <img src="{{ prod_api.image }}" alt="{{ prod_api.title }}" width="150px">
+        <h3>{{ prod_api.title }}</h3>
+        <p>{{ prod_api.description|truncatechars:100 }}</p>
+        <p>R$ {{ prod_api.price|floatformat:2 }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block titulo %}Meu Site{% endblock %}</title>
+    <link rel="stylesheet" href="{% static '/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'style_produto.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+   <nav class="navbar">
+    <div class="logo">Projeto Django</div> <ul class="nav-links">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="#">Quem Somos</a></li>
+        <li><a href="{% url 'listar_produtos' %}">Produtos</a></li>
+        {% if request.session.email %}
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        {% endif %}
+    </ul>
+    {% if request.session.email %}
+        <a href="{% url 'logout' %}" class="btn-login">Sair</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn-login">Login</a>
+    {% endif %}
+</nav>
+
+<main>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% block main %} {% block conteudo %}{% endblock %} {% endblock %}
+</main>
+
+    <footer>
+      <p>&copy; 2025 Projeto Django - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+function buscarCEP(cep) {
+  cep = cep.replace(/\D/g, '');
+  if (cep.length !== 8) return;
+
+  fetch(`https://viacep.com.br/ws/${cep}/json/`)
+    .then(response => response.json())
+    .then(data => {
+      if (!data.erro) {
+        document.querySelector('[name="logradouro"]').value = data.logradouro || '';
+        document.querySelector('[name="bairro"]').value = data.bairro || '';
+        document.querySelector('[name="localidade"]').value = data.localidade || '';
+        document.querySelector('[name="uf"]').value = data.uf || '';
+      }
+    });
+}
+</script>
+
+  </body>
+</html>

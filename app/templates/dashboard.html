@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+
+{% block titulo %}
+  Dashboard
+{% endblock %}
+
+{% block conteudo %}
+  <h1 style="text-align: center; margin-bottom: 30px;"> Bem-Vindo(a) {{email}} </h1>
+  <ul class="dashboard-links">
+    <li><a href="{% url 'exibirUsuarios' %}">Usuários</a></li>
+    <li><a href="{% url 'cadastrar_produto' %}">Cadastrar Produto</a></li>
+    <li><a href="{% url 'listar_produtos' %}">Listar Produtos</a></li>
+    <li><a href="{% url 'grafico_vendas' %}">Gráfico de Vendas</a></li>
+  </ul>
+{% endblock %}

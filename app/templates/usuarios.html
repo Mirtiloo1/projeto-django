@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+
+{% block titulo %}
+  Usuários
+{% endblock %}
+
+{% block conteudo %}
+
+  <h1>Usuários</h1>
+
+  <table border="1">
+    <tr>
+      <th>Nome</th>
+      <th>E-mail</th>
+      <th colspan="2">Ações</th>
+    </tr>
+    {% for user in ListUsuarios %}
+    <tr>
+      <td>{{ user.nome }}</td>
+      <td>{{ user.email }}</td>
+      <td><a href="{% url 'excluirUsuario' user.id %}">Excluir<a/></td>
+      <td><a href="{% url 'editarUsuario' user.id %}">Editar<a/></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

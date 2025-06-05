@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+
+{% block titulo %}
+  Checkout
+{% endblock %}
+
+{% block conteudo %}
+  <h1>CHECKOUT - Finalizar Compra</h1>
+
+  <div class="checkout-info">
+    <h3>Dados do Cliente:</h3>
+    <p>Nome: {{ cliente.nome }}</p>
+    <p>E-mail: {{ cliente.email }}</p>
+    <p>Endereço: {{ cliente.logradouro }}, {{ cliente.numero_residencia }}, {{ cliente.bairro }} - {{ cliente.localidade }}/{{ cliente.uf }}</p>
+  </div>
+
+  <div class="checkout-info">
+    <h3>Produto Selecionado:</h3>
+    <p>Produto: {{ produto.nome }}</p>
+    <p>Preço: R$ {{ produto.preco|floatformat:2 }}</p>
+    {% if produto.foto %}
+        <img src="{{ produto.foto.url }}" alt="{{ produto.nome }}" width="100px">
+    {% endif %}
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    <h3>Dados de Pagamento:</h3>
+    {{ form_venda.as_p }}
+    <button type="submit" class="btn">Finalizar Compra</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'template.html' %}
+
+{% block conteudo %}
+<h1>{{ titulo }}</h1>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn">Salvar</button>
+</form>
+<a href="{% url 'listar_produtos' %}" class="btn btn-cancelar">Cancelar</a>
+{% endblock %}

@@ -1,0 +1,327 @@
+h1 {
+    color: #0056b3;
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+h2 {
+    color: #0056b3;
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    display: inline-block;
+    width: auto;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a.btn, button.btn {
+    display: inline-block;
+    padding: 9px 18px;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+a.btn:hover, button.btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+a.btn-editar, .btn-editar {
+    background-color: #ffc107;
+    color: #343a40;
+}
+a.btn-editar:hover, .btn-editar:hover {
+    background-color: #e0a800;
+}
+
+a.btn-excluir, .btn-excluir {
+    background-color: #dc3545;
+    color: white;
+}
+a.btn-excluir:hover, .btn-excluir:hover {
+    background-color: #c82333;
+}
+
+a.btn-cancelar, .btn-cancelar {
+    background-color: #6c757d;
+    color: white;
+}
+a.btn-cancelar:hover, .btn-cancelar:hover {
+    background-color: #545b62;
+}
+
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 30px auto;
+    max-width: 1200px;
+    padding: 0 10px;
+}
+
+.produto-card {
+    background-color: #fff;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.produto-card img {
+    max-width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin: 0 auto 15px auto;
+    border-radius: 5px;
+}
+
+.produto-card h3 {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.produto-card p {
+    font-size: 1.0em;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.produto-card p:nth-of-type(2) {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 1.2em;
+    margin-top: auto;
+}
+
+.produto-card .botoes-acao {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.produto-card .botoes-acao a {
+    flex-grow: 1;
+    text-align: center;
+}
+
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form textarea,
+form input[type="file"],
+form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.checkout-info {
+    background-color: #fff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.checkout-info h3 {
+    color: #0056b3;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.checkout-info p {
+    margin-bottom: 8px;
+    font-size: 1em;
+    color: #495057;
+}
+
+.checkout-info img {
+    max-width: 120px;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.caixa-grafico {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.caixa-grafico img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+table a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+table a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.dashboard-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.dashboard-links li {
+    background-color: #007bff;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 220px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-links li:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.4em;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .produtos-grid {
+        grid-template-columns: 1fr;
+    }
+    .produto-card {
+        padding: 15px;
+    }
+    form {
+        padding: 20px;
+    }
+    .dashboard-links li {
+        width: 180px;
+        height: 120px;
+        font-size: 1.2em;
+    }
+}

@@ -1,0 +1,11 @@
+{% extends "template.html" %}
+
+{% block titulo %}Home{% endblock %}
+
+{% block main %}
+    <section class="hero">
+        <h1>Bem-vindo ao Meu Site!</h1>
+        <p>Conheça nossos produtos e serviços de alta qualidade.</p>
+        <a href="{%url 'addUsuario'%}" class="btn-cadastro">Cadastre-se</a>
+    </section>
+{% endblock %}

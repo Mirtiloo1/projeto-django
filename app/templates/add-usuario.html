@@ -1,0 +1,17 @@
+{% extends "template.html" %}
+
+{% block titulo %}
+  Novo Usuário
+{% endblock %}
+
+{% block conteudo %}
+  <h1>Novo Usuário</h1>
+
+  <form method="post" action="{% url 'addUsuario' %}">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.as_p }}
+    {{ form.errors }}
+    <input type="submit" value="Cadastrar">
+  </form>
+{% endblock %}

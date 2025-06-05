@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+
+{% block titulo %}
+  Novo Usuario
+{% endblock %}
+
+{% block conteudo %}
+  <h1>Login</h1>
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Logar">
+  </form>
+
+  <p>Não tem cadastro? <a href="{% url 'addUsuario' %}">Cadastre-se</a></p>
+{% endblock %}
