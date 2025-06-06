@@ -193,6 +193,45 @@ def checkout(request):
     }
     return render(request, 'checkout.html', context)
 
+def grafico(request):
+    sessao = verificar_sessao(request)
+    if sessao: return sessao
+
+    produtos = Produto.objects.all()
+    nome = [produto.nome for produto in produtos]
+    estoque = [produto.estoque for produto in produtos]
+
+    # Configurações para o gráfico
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.bar(nome, estoque, color='#4a90e2') # Cor das barras
+    ax.set_xlabel("Produto", color='#b0b0b0')
+    ax.set_ylabel("Estoque", color='#b0b0b0')
+    ax.set_title("Estoque de Produtos", color='#f0f0f0')
+    
+    # Linha corrigida: Removido 'ha='right''
+    ax.tick_params(axis='x', colors='#b0b0b0', rotation=45) 
+    ax.tick_params(axis='y', colors='#b0b0b0') 
+    
+    ax.set_facecolor('#2a2a2a') # Fundo do gráfico
+    fig.set_facecolor('#2a2a2a') # Fundo da figura
+    ax.spines['left'].set_color('#b0b0b0') # Cor dos eixos
+    ax.spines['bottom'].set_color('#b0b0b0')
+    ax.spines['right'].set_color('none') # Remover borda direita
+    ax.spines['top'].set_color('none') # Remover borda superior
+    ax.grid(axis='y', linestyle='--', alpha=0.7, color='#555') # Linhas de grade mais suaves
+
+    plt.tight_layout() # Ajusta o layout para evitar sobreposição
+
+    buf = io.BytesIO()
+    plt.savefig(buf, format="png")
+    buf.seek(0)
+
+    string = base64.b64encode(buf.read())
+    uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+    plt.close(fig) # Fechar a figura para liberar memória
+
+    return render(request, 'grafico.html', {'dados':uri})
+
 def grafico_vendas(request):
     sessao = verificar_sessao(request)
     if sessao: return sessao

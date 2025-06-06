@@ -36,6 +36,8 @@ urlpatterns = [
     
     path('checkout/', views.checkout, name='checkout'),
     
+    path ('grafico', views.grafico, name="grafico"),
+    
     path('grafico-vendas/', views.grafico_vendas, name='grafico_vendas'),
     
 ]
